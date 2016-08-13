@@ -30,7 +30,23 @@ $('.article-section > div:last').remove();
 $('.article-section').append(content);
 
 $('.decrypt').each(function(){
-	var decrypted = $(this).text().rot1();
+	var $paragraph = $(this);
 
-	$(this).text( decrypted );
+	// Links sind unverschluesselt, die nehmen wir also vorher raus
+	var $links = [];
+
+	$('a.text-link-int', $paragraph).each(function(){
+		$links.push($(this)[0].outerHTML);
+		$(this).replaceWith('§§§§§'+$links.length);
+	});
+
+	var decrypted = $paragraph.text().rot1();
+
+	$paragraph.text( decrypted );
+
+	// dann Links wieder einfügen
+	$.each($links, function(i, link){
+		var regexp = new RegExp('¦¦¦¦¦'+i, 'g');
+		$paragraph.html($paragraph.html().replace(regexp, link));
+	});
 });
