@@ -21,15 +21,10 @@ String.prototype.rot1 = rot1 = function(s)
 	}).join('');
 };
 
+$('.js-spiegelplus-obfuscated-intro').remove();
 $('.obfuscated').removeClass('obfuscated').addClass('decrypt');
-var content = $('.obfuscated-content').html();
-
-$('#laterpay-replacement').remove();
-$('.article-section > div:last').remove();
-
-$('.article-section').append(content);
-
 $('.decrypt').each(function(){
+
 	var $paragraph = $(this);
 
 	// Links sind unverschluesselt, die nehmen wir also vorher raus
@@ -42,6 +37,7 @@ $('.decrypt').each(function(){
 
 	var decrypted = $paragraph.text().rot1();
 
+
 	$paragraph.text( decrypted );
 
 	// dann Links wieder einfügen
@@ -50,3 +46,10 @@ $('.decrypt').each(function(){
 		$paragraph.html($paragraph.html().replace(regexp, link));
 	});
 });
+var content = $('.obfuscated-content').html();
+$('.article-section > div:last').remove();
+$('.article-section > div:last').remove();
+
+$('.article-section').append(content);
+
+$('#laterpay-replacement').remove();
