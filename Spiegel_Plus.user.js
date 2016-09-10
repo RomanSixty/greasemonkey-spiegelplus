@@ -4,8 +4,8 @@
 // @description zeigt vollständige Spiegel Plus Artikel an
 // @include     http://www.spiegel.de/*
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
-// @version     1.1
-// @grant       none
+// @version     1.2
+// @grant       GM_addStyle
 // ==/UserScript==
 
 String.prototype.rot1 = rot1 = function(s)
