@@ -4,7 +4,7 @@
 // @description zeigt vollständige Spiegel Plus Artikel an
 // @include     http://www.spiegel.de/*
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
-// @version     1
+// @version     1.1
 // @grant       none
 // ==/UserScript==
 
@@ -27,10 +27,10 @@ $('.decrypt').each(function(){
 
 	var $paragraph = $(this);
 
-	// Links sind unverschluesselt, die nehmen wir also vorher raus
+	// Links sind unverschlüsselt, die nehmen wir also vorher raus
 	var $links = [];
 
-	$('a.text-link-int', $paragraph).each(function(){
+	$('a.text-link-int, a.text-link-ext', $paragraph).each(function(){
 		$links.push($(this)[0].outerHTML);
 		$(this).replaceWith('§§§§§'+$links.length);
 	});
